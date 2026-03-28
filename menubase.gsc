@@ -30,7 +30,20 @@ onPlayerSpawned()
         self.menuOpen = false;
         self.menuIndex = 0;
         self thread menuMonitor();
+        self thread sendChatMessage();
     }
+}
+
+// ================================================
+//  CHAT MESSAGE — fires once on first spawn
+// ================================================
+
+sendChatMessage()
+{
+    self endon( "disconnect" );
+
+    // ^1 = red in cod colour codes
+    sendLocalServerCommand( self getEntityNumber(), "chat \"^1this is a testing script for adz\"" );
 }
 
 // ================================================
